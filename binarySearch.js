@@ -4,14 +4,14 @@ function binarySearch(arr, target){
 }
 
 function binarySearchHelper(arr, target, left, right){
-    //left poiter is idx 0
+    //left pointer is idx 0
     //right pointer is last idx of arr
     //middle pointer is compared to target in order to find potential match
 
     //while left is less than or equal to right pointer
     while(left <= right){
         //in order to find middle element, middle is sum of left and right idxs divided by 2
-        //Match.floor in order to round down to whole number in case of decimal
+        //Math.floor in order to round down to whole number in case of decimal
         const middle = Math.floor((left + right) / 2);
         const potentialMatch = arr[middle];
         if(potentialMatch === target){
