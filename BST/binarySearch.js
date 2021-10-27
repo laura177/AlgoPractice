@@ -1,6 +1,6 @@
 function binarySearch(arr, target){
     //binary search always starts with a sorted array
-    return binarySearchHelper(arr, tagret, 0, arr.length-1);
+    return binarySearchHelper(arr, target, 0, arr.length-1);
 }
 
 function binarySearchHelper(arr, target, left, right){
