@@ -120,3 +120,29 @@ const inputMatrix = [
 //should return [1,1,5]
 riverSizes(inputMatrix)
 */
+
+
+
+//recursive
+function recursiveRiverSizes(matrix){
+  const sizes = [];
+
+  for(let i = 0; i < matrix.length; i++){
+    for(let j = 0; j < matrix[0].length; j++){
+      if(matrix[i][j] === 1){
+        sizes.push(recursiveVisitRiver(matrix, i, j))
+      }
+    }
+  }
+}
+
+function recursiveVisitRiver(matrix, i, j){
+  //base case: validate i and j inputs first, then check if node value is 0
+  if(i >= matrix.length /*last row*/ || j >= matrix[0].length /*last column*/ || i < 0 /*first row*/ || j < 0 /*first column*/|| !matrix[i][j]/*no rows or columns*/){
+    return 0
+  }
+  //mutate current matrix, changing visited nodes to value 0 to indicate it's been visited
+  matrix[i][j] = 0;
+  //chain recursive calls to one another to check the four directions and return the final size(size starting with val of 1)
+  return 1 + recursiveVisitRiver(matrix,i+1,j) + recursiveVisitRiver(matrix,i-1,j) + recursiveVisitRiver(matrix,i,j+1) + recursiveVisitRiver(matrix,i,j-1);
+}
