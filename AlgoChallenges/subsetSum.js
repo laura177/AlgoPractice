@@ -24,3 +24,34 @@ function subsetSum(arr, target){
     }
     return false
 }
+
+//Set instead of array
+function subsetSums(arr, target){
+    const possibleSums = new Set([0]);
+
+    for(const num of arr){
+        const currentPossibleSums = new Set(possibleSums);
+        for(const currentSum of currentPossibleSums){
+            const newSum = currentSum + num;
+            if(newSum === target){
+                return true;
+            }
+            if(newSum < target){
+                possibleSums.add(newSum)
+            }
+        }
+    }
+    return false
+}
+
+
+//recursive
+function subsetSum(arr, target){}
+
+
+
+// console.log(subsetSum(2, [1, 10, 5, 3])); // false
+// console.log(subsetSum(10, [1, 10, 5, 3])); // true
+// console.log(subsetSum(9, [1, 10, 5, 3])); // true
+// console.log(subsetSum(19, [1, 10, 5, 3])); // true
+// console.log(subsetSum(17, [1, 10, 5, 3])); // false
